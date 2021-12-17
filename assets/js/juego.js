@@ -1,16 +1,15 @@
 let deck = [];
 const types = ['C', 'D', 'H', 'S']
 const specials = ['A', 'J', 'Q', 'K'];
-let puntosJugador =0,
-puntosCompu =0;
+let puntosJugador = 0,
+    puntosCompu = 0;
 
 //Ref HTML
 
 const btnPedir = document.querySelector('#btnPedir');
 
 const puntosHTML = document.querySelectorAll('small');
-
-const divCartasJugador = document.querySelectorAll('jugador-cartas')
+const divCartasJugador = document.querySelector('#jugador-cartas')
 const crearDeck = () => {
     for (let i = 2; i <= 10; i++) {
         for (let type of types) {
@@ -59,11 +58,15 @@ const valorCarta = (carta) => {
 //eventos
 
 btnPedir.addEventListener('click', () => {
-    
-    const carta =pedirCarta();
+
+    const carta = pedirCarta();
+
     puntosJugador = puntosJugador + valorCarta(carta);
     puntosHTML[0].innerText = puntosJugador;
-
-
-    divCartasJugador.append()
+    
+    const imgCarta = document.createElement('img');
+    imgCarta.src = `assets/cartas/${ carta }.png`;
+    imgCarta.classList.add('carta');
+    
+    divCartasJugador.append( imgCarta );
 })
